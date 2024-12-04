@@ -1,27 +1,75 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import COLORS from '../../const/color';
+import { AuthContext } from '../../context/AuthContext';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 const RegisterScreen = ({ navigation }) => {
+
+  
+    
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [name, setname] = useState(null);
+  const [phone, setphone] = useState(null);
+  const [city, setcity] = useState(null);
+  const [address, setaddress] = useState(null);
+  
+  
+  const {isLoading,registers} = useContext(AuthContext);
+
+
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Text style={styles.title}>Register</Text>
+        <Spinner visible={isLoading} />
+
         <TextInput
           style={styles.input}
           placeholder="Name"
+          value={name}
+          onChangeText={text => setname(text)}
         />
         <TextInput
           style={styles.input}
           placeholder="Email"
           keyboardType="email-address"
+          value={email}
+          onChangeText={text => setEmail(text)}
         />
+
         <TextInput
           style={styles.input}
           placeholder="Password"
           secureTextEntry
+          value={password} 
+          onChangeText={text => setPassword(text)}
         />
-        <Button title="Register" onPress={() => {}} />
+        
+        <TextInput
+          style={styles.input}
+          placeholder="Phone (628*********)"
+          keyboardType="phone-pad"
+          value={phone}
+          onChangeText={text => setphone(text)}
+        />
+        
+        <TextInput
+          style={styles.input}
+          placeholder="City"
+          value={city}
+          onChangeText={text => setcity(text)}
+        />
+        
+        <TextInput
+          style={styles.input}
+          placeholder="Address"
+          value={address}
+          onChangeText={text => setaddress(text)}
+        />
+        <Button title="Register" onPress={() => {registers(name,email,phone,city, password,address,navigation)}} />
+
         <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
           <Text style={styles.link}>Already have an account? Login here</Text>
         </TouchableOpacity>

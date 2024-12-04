@@ -28,7 +28,7 @@ const Navigation = () => {
             <Stack.Screen name="LoginScreen" component={SidebarNavigation}/>
           ) :
           (
-            <Stack.Screen name="ListToko" component={ListToko}/>
+            <Stack.Screen name="LoginScreen" component={ListToko}/>
           )
         
         ) :

@@ -33,6 +33,8 @@ export const AuthProvider = ({ children }) => {
               alert('Error saving userInfo to AsyncStorage: '+ err)
               setIsLoading(false);
           });
+        }else{
+          alert(userData.messages)
         }
         
       })
@@ -43,7 +45,6 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
-
   const setTokos = (toko) => {
     console.log(toko)
     setTokoInfo(toko);
@@ -52,9 +53,9 @@ export const AuthProvider = ({ children }) => {
            
 
   };
-  const registers = (name,email,phone,city, password,address) => {
+  const registers = (name,email,phone,city, password,address,navigation) => {
     setIsLoading(true);
-    console.log('login', `${BASE_URL}api/login`);
+    console.log('register', `${BASE_URL}api/register`);
 
     axios
       .post(`${BASE_URL}api/register`, { name,email,phone,city, password,address})
@@ -62,21 +63,29 @@ export const AuthProvider = ({ children }) => {
         let userData = res.data.data;
         console.log('response registers', userData);
         if (userData.access_token) {
+
           setUserInfo(userData);
+
           AsyncStorage.setItem('userInfo', JSON.stringify(userData))
             .then(() => {
               setIsLoading(false);
+              navigation.navigate('LoginScreen');
+
             })
             .catch((err) => {
               alert('Error saving userInfo to AsyncStorage: '+ err)
               setIsLoading(false);
           });
+        }else{
+          alert(userData.messages)
+          setIsLoading(false);
+
         }
         
       })
       .catch((err) => {
-          alert('error login: '+err)
-        console.log('error login', err);
+          alert('error register: '+err)
+        console.log('error register', err);
         setIsLoading(false);
       });
   };
@@ -101,13 +110,22 @@ export const AuthProvider = ({ children }) => {
         });
     };
 
-  const logouts = async (navigation) => {
-    setUserInfo({})
-    AsyncStorage.removeItem('userInfo')
+    const logouts = async (navigation) => {
+      setUserInfo({})
+      AsyncStorage.removeItem('userInfo')
+  
+      setTokoInfo({})
+      AsyncStorage.removeItem('TokoInfo')
 
-    navigation.navigate('LoginScreen');
-  };
+      navigation.navigate('LoginScreen');
+    };
 
+    const logoutTokos = async (navigation) => {
+      setTokoInfo({})
+      AsyncStorage.removeItem('TokoInfo')
+  
+      navigation.navigate('LoginScreen');
+    };
   const isLoggedIn = async () => {
       try {
         setSplashLoading(true);
@@ -119,7 +137,7 @@ export const AuthProvider = ({ children }) => {
           userInfo = JSON.parse(userInfo);
           if (userInfo.access_token) {
             let token = userInfo.access_token.split('|')[1];
-            profils(token);
+            // profils(token);
             setUserInfo(userInfo);
           } else {
             console.error('Access token tidak ditemukan di userInfo');
@@ -158,10 +176,12 @@ export const AuthProvider = ({ children }) => {
         setSplashLoading(false);
       }
     };
-  useEffect(() => {
-    isLoggedIn();
-    isLoggedInStore();
-  }, [])
+
+    useEffect(() => {
+      isLoggedIn();
+      isLoggedInStore();
+    }, [])
+
   return (
     <AuthContext.Provider value={{ 
       isLoading,
@@ -171,7 +191,8 @@ export const AuthProvider = ({ children }) => {
       logins,
       logouts,
       registers,
-      setTokos
+      setTokos,
+      logoutTokos
 
      }}>
       {children}

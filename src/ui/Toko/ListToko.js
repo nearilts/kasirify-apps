@@ -50,21 +50,31 @@ const ListToko = ({ navigation }) => {
         </View>
       ) : (
         <>
-         <FlatList
-            data={userData?.data} 
-            renderItem={renderItem} 
-            keyExtractor={(item) => item.id.toString()} 
-        />
-        <FloatingButton
-            iconName="assignment-add"
-            onPress={handleAddToko}
-            buttonText="Tambah Toko"
-        />
-        
+          {Array.isArray(userData?.data) && userData.data.length > 0 ? (
+            <>
+            <FlatList
+                data={userData?.data} 
+                renderItem={renderItem} 
+                keyExtractor={(item) => item.id.toString()} 
+            />
+            
+          
+            </>
+          ) : (
+            <>
+            <View style={styles.container}>
+                <Text style={styles.loadingText}>Tidak Ada Toko, Buat Toko Baru</Text>
+            </View>
+            
+            </>
+          )}
         </>
       )}
-
-      
+        <FloatingButton
+              iconName="assignment-add"
+              onPress={handleAddToko}
+              buttonText="Tambah Toko"
+          />
        
     </View>
   );
