@@ -15,8 +15,6 @@ const useFetchData = (navigation, endpoint) => {
       let token = userInfo.access_token.split('|')[1];
       console.log('token', token);
 
-
-
       console.log('url', `${BASE_URL}api/${endpoint}`);
       const response = await axios.get(`${BASE_URL}api/${endpoint}`, {
         headers: {
