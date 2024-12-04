@@ -45,7 +45,6 @@ const Navigation = () => {
           </>
     )
       }
-      <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
 
       <Stack.Screen name="SidebarNavigation" component={SidebarNavigation} />
       <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
