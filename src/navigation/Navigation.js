@@ -12,6 +12,7 @@ import HomeDetail from '../ui/Home/HomeDetail';
 import LoginScreen from '../ui/Auth/LoginScreen';
 import RegisterScreen from '../ui/Auth/RegisterScreen';
 import ListToko from '../ui/Toko/ListToko';
+import BuatToko from '../ui/Toko/BuatToko';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -27,7 +28,7 @@ const Navigation = () => {
          TokoInfo.id  ? (
           <>
             <Stack.Screen name="LoginScreen" component={SidebarNavigation}/>
-          <Stack.Screen name="RegisterScreen" component={SidebarNavigation} />
+            <Stack.Screen name="RegisterScreen" component={SidebarNavigation} />
           </>
           ) :
           (
@@ -50,6 +51,8 @@ const Navigation = () => {
       <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
       
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="BuatToko" component={BuatToko} />
+
       <Stack.Screen name="HomeDetail" component={HomeDetail} />
       <Stack.Screen name="ListTabScreen" component={HomeScreen} />
       <Stack.Screen name="AddTabScreen" component={HomeScreen} />

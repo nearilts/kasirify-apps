@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
           AsyncStorage.setItem('userInfo', JSON.stringify(userData))
             .then(() => {
               setIsLoading(false);
-              navigation.navigate('LoginScreen');
+              // navigation.navigate('LoginScreen');
 
             })
             .catch((err) => {

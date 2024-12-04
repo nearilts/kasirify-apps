@@ -70,7 +70,7 @@ const RegisterScreen = ({ navigation }) => {
         />
         <Button title="Register" onPress={() => {registers(name,email,phone,city, password,address,navigation)}} />
 
-        <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+        <TouchableOpacity onPress={() => navigation.replace('LoginScreen')}>
           <Text style={styles.link}>Already have an account? Login here</Text>
         </TouchableOpacity>
       </ScrollView>

@@ -34,7 +34,7 @@ const ListToko = ({ navigation }) => {
   );
 
   const handleAddToko = () => {
-    navigation.navigate('AddTokoScreen');
+    navigation.navigate('BuatToko');
   };
 
   const handleToko = (item) => {

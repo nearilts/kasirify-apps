@@ -32,6 +32,8 @@ const usePostData = () => {
       console.log('body', body);
 
       const response = await axios.post(`${BASE_URL}api/${endpoint}`, body, { headers });
+      console.log('response', response.data);
+
       setIsLoading(false);
       return response.data; 
     } catch (error) {
