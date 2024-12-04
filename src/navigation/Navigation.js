@@ -25,16 +25,25 @@ const Navigation = () => {
 
       {userInfo.access_token  ? (
          TokoInfo.id  ? (
+          <>
             <Stack.Screen name="LoginScreen" component={SidebarNavigation}/>
+          <Stack.Screen name="RegisterScreen" component={SidebarNavigation} />
+          </>
           ) :
           (
+            <>
+          <Stack.Screen name="RegisterScreen" component={ListToko} />
             <Stack.Screen name="LoginScreen" component={ListToko}/>
+            </>
           )
         
         ) :
         (
+          <>
           <Stack.Screen name="LoginScreen" component={LoginScreen}/>
-        )
+          <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+          </>
+    )
       }
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
 
