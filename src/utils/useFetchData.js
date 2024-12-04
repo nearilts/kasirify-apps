@@ -52,7 +52,7 @@ const useFetchData = (navigation, endpoint) => {
     };
   }, [navigation, endpoint]);
 
-  return { datas, isLoading, fetchDatas }; 
+  return { datas, isLoading, refetch: fetchDatas }; 
 };
 
 export default useFetchData;

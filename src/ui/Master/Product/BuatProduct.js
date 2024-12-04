@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator, FlatList, Modal, ScrollView  } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator, FlatList, Modal, ScrollView, TouchableOpacity  } from 'react-native';
 import usePostData from '../../../utils/usePostData';
 import SearchableSelect from '../../../component/SearchableSelect';
 import { BASE_URL } from '../../../const/url';
@@ -53,11 +53,17 @@ const BuatProduct = ({ navigation }) => {
         alert('Data Success Save');
         navigation.goBack()
       } else {
-        alert('Gagal Simpan');
+        alert(response.data?.messages);
       }
     } catch (error) {
       alert('Terjadi kesalahan saat menyimpan data.');
     }
+  };
+  const removeGrosirPrice = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      price_grosir: prev.price_grosir.filter((_, i) => i !== index),
+    }));
   };
 
   return (
@@ -82,15 +88,20 @@ const BuatProduct = ({ navigation }) => {
         onChangeText={(value) => handleInputChange('name', value)}
       />
 
-      <Text>Code</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Scan or enter manually"
-        value={formData.code}
-        onChangeText={(value) => handleInputChange('code', value)}
-        keyboardType="number-pad"
-      />
-       <Button title="Scan Barcode" onPress={() => setScannerVisible(true)} />
+        <Text>Code</Text>
+        <View style={styles.row}>
+        <TextInput
+          style={[styles.input, styles.flexInput]}
+          placeholder="Scan or enter manually"
+          value={formData.code}
+          onChangeText={(value) => handleInputChange('code', value)}
+          keyboardType="number-pad"
+        />
+        <View style={{height: 50}}>
+          <Button title="Scan Barcode" onPress={() => setScannerVisible(true)} />
+        </View>
+        
+      </View>
        <Modal visible={scannerVisible} animationType="slide">
         <BarcodeScanner
           onCodeScanned={(code) => {
@@ -182,15 +193,39 @@ const BuatProduct = ({ navigation }) => {
       <FlatList
         data={formData.price_grosir}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <Text>{`${item.name} - Min: ${item.min}, Price: ${item.price}`}</Text>
+        renderItem={({ item, index }) => (
+          <View style={styles.listItem}>
+            <TextInput
+              style={styles.input}
+              value={item.name}
+              placeholder="Name"
+              onChangeText={(value) => updateGrosirPrice(index, 'name', value)}
+            />
+            <TextInput
+              style={styles.input}
+              value={item.min}
+              placeholder="Min Qty"
+              keyboardType="number-pad"
+              onChangeText={(value) => updateGrosirPrice(index, 'min', value)}
+            />
+            <TextInput
+              style={styles.input}
+              value={item.price}
+              placeholder="Price"
+              keyboardType="number-pad"
+              onChangeText={(value) => updateGrosirPrice(index, 'price', value)}
+            />
+            <TouchableOpacity onPress={() => removeGrosirPrice(index)} style={styles.deleteButton}>
+              <Text style={styles.deleteButtonText}>Delete</Text>
+            </TouchableOpacity>
+          </View>
         )}
       />
 
       {isLoading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
-        <View style={{marginBottom:55}}>
+        <View style={{marginBottom:55, marginTop:20}}>
           <Button title="Submit" onPress={handleNext} />
         </View>
         
@@ -209,7 +244,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
   },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },  
+  flexInput: {
+    flex: 1, // Membuat input mengisi ruang kosong
+    marginRight: 10, // Memberi jarak antara input dan tombol
+  },
   input: {
+    height: 50,
     borderWidth: 1,
     borderColor: '#ccc',
     padding: 10,

@@ -6,18 +6,40 @@ import styles from '../../../const/styles';
 import { ButtonLong, FloatingButton } from '../../../component/FloatingButton';
 import COLORS from '../../../const/color';
 import { AuthContext } from '../../../context/AuthContext';
+import useDeleteData from '../../../utils/useDeleteData';
 
 const ListCategory = ({ navigation }) => {
-  const { datas: userData, isLoading } = useFetchData(navigation, 'category');
+  const { datas: userData, isLoading, refetch } = useFetchData(navigation, 'category');
   const {setTokos} = useContext(AuthContext);
 
+  const { deleteData, isLoading: loadingdelete } = useDeleteData();
+
+  const handleDelete = async (productId) => {
+    try {
+      const response = await deleteData('category/'+productId);
+      if (response.meta?.code === 200) {
+        alert(response.meta?.messages);
+        refetch();
+      } else {
+        alert(response.meta?.messages);
+      }
+    } catch (error) {
+      alert('Terjadi kesalahan saat menyimpan data.');
+    }
+  };
   const renderItem = ({ item }) => (
     <View style={styles.container}>
         <View style={[styles.card90, { marginBottom: 5 }]}>
-        <View style={{alignItems:'center'}}>
-            <Text style={[styles.text18,{fontWeight:'bold',color:COLORS.primary}]}>{item?.name}</Text>
-        </View>
-        
+        <TouchableOpacity onPress={() => navigation.navigate('UbahCategory', { Id: item.id })}>
+        <View style={styles.flexRowBetween}>
+              <View style={styles.flexColumnBetween}>
+                <Text style={[styles.text18,{fontWeight:'bold',color:COLORS.primary}]}>{item?.name}</Text>
+              </View>
+              <TouchableOpacity onPress={() => handleDelete(item.id)} style={styles.deleteButton}>
+              <Text style={styles.deleteText}>Hapus</Text>
+            </TouchableOpacity>
+            </View>
+          </TouchableOpacity>
         </View>
     </View>
    

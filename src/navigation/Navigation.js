@@ -17,6 +17,14 @@ import ListCategory from '../ui/Master/Category/ListCategory';
 import BuatCategory from '../ui/Master/Category/BuatCategory';
 import ListProduct from '../ui/Master/Product/ListProduct';
 import BuatProduct from '../ui/Master/Product/BuatProduct';
+import ListKasir from '../ui/Master/Kasir/ListCategory';
+import BuatKasir from '../ui/Master/Kasir/BuatCategory';
+import ListPelanggan from '../ui/Master/Pelanggan/ListPelanggan';
+import BuatPelanggan from '../ui/Master/Pelanggan/BuatPelanggan';
+import EditProduct from '../ui/Master/Product/EditProduct';
+import UbahPelanggan from '../ui/Master/Pelanggan/UbahPelanggan';
+import UbahKasir from '../ui/Master/Kasir/UbahKasir';
+import UbahCategory from '../ui/Master/Category/UbahCategory';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -59,8 +67,16 @@ const Navigation = () => {
 
       <Stack.Screen name="ListCategory" component={ListCategory} />
       <Stack.Screen name="BuatCategory" component={BuatCategory} />
+      <Stack.Screen name="UbahCategory" component={UbahCategory} />
       <Stack.Screen name="ListProduct" component={ListProduct} />
       <Stack.Screen name="BuatProduct" component={BuatProduct} />
+      <Stack.Screen name="EditProduct" component={EditProduct} />
+      <Stack.Screen name="ListKasir" component={ListKasir} />
+      <Stack.Screen name="BuatKasir" component={BuatKasir} />
+      <Stack.Screen name="UbahKasir" component={UbahKasir} />
+      <Stack.Screen name="ListPelanggan" component={ListPelanggan} />
+      <Stack.Screen name="BuatPelanggan" component={BuatPelanggan} />
+      <Stack.Screen name="UbahPelanggan" component={UbahPelanggan} />
 
 
       <Stack.Screen name="HomeDetail" component={HomeDetail} />

@@ -90,7 +90,17 @@ export const styles = StyleSheet.create({
         marginLeft: 10,
         fontWeight:'bold'
     },
-
+    deleteButton: {
+      backgroundColor: 'red',
+      padding: 5,
+      borderRadius: 5,
+      height:35,
+      marginTop:20
+    },
+    deleteText: {
+      color: 'white',
+      fontWeight: 'bold',
+    },
 })
 
 export default styles;
