@@ -45,7 +45,12 @@ export const AuthProvider = ({ children }) => {
 
 
   const setTokos = (toko) => {
+    console.log(toko)
     setTokoInfo(toko);
+
+    AsyncStorage.setItem('TokoInfo', JSON.stringify(toko))
+           
+
   };
   const registers = (name,email,phone,city, password,address) => {
     setIsLoading(true);
@@ -133,8 +138,29 @@ export const AuthProvider = ({ children }) => {
     };
     
 
+    const isLoggedInStore = async () => {
+      try {
+    
+        let TokoInfo = await AsyncStorage.getItem('TokoInfo');
+    
+        if (TokoInfo) {
+          TokoInfo = JSON.parse(TokoInfo);
+          if (TokoInfo.id) {
+            setTokoInfo(TokoInfo);
+          } else {
+            console.error('TokoInfo tidak ditemukan di TokoInfo');
+            setTokoInfo({});
+          }
+        } 
+    
+      } catch (error) {
+        console.error('Error di isLoggedInStore:', error);
+        setSplashLoading(false);
+      }
+    };
   useEffect(() => {
     isLoggedIn();
+    isLoggedInStore();
   }, [])
   return (
     <AuthContext.Provider value={{ 

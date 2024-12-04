@@ -31,6 +31,7 @@ const SidebarNavigation = () => {
      <Drawer.Screen name="Home Screen" component={HomeScreen} />
      <Drawer.Screen name="ListTabScreen" component={HomeScreen} />
      <Drawer.Screen name="AddTabScreen" component={HomeScreen} />
+
    </Drawer.Navigator>
 
   )

@@ -17,7 +17,6 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
 
     const {userInfo,TokoInfo} = useContext(AuthContext);
-
   return (
     <NavigationContainer>
       <StatusBar backgroundColor={COLORS.white} barStyle="dark-content" />
@@ -38,8 +37,6 @@ const Navigation = () => {
         )
       }
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-
-
 
       <Stack.Screen name="SidebarNavigation" component={SidebarNavigation} />
       <Stack.Screen name="BottomNavigation" component={BottomNavigation} />

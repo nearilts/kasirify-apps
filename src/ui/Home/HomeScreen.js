@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import useFetchData from '../../utils/useFetchData';
 import Spinner from 'react-native-loading-spinner-overlay';
+import UseGetData from '../../utils/UseGetData';
 
 const HomeScreen = ({ navigation }) => {
   const { datas: userData, isLoading } = useFetchData(navigation, 'user');
-
+ 
   return (
     <View style={styles.container}>
       <Spinner visible={isLoading} />

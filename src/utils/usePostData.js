@@ -14,6 +14,16 @@ const usePostData = () => {
       userInfo = JSON.parse(userInfo);
       let token = userInfo.access_token.split('|')[1];
 
+
+      let toko_id = await AsyncStorage.getItem('TokoInfo');
+      toko_id = JSON.parse(toko_id);
+      console.log("Parsed toko_id:", toko_id); 
+
+      if (toko_id && toko_id.toko_id) {
+        body['toko_id'] = toko_id.toko_id;
+      }
+
+
       const headers = {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
