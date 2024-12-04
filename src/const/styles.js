@@ -15,11 +15,10 @@ export const styles = StyleSheet.create({
     },
     container : {
         alignItems:'center',
-        padding:10, 
-        paddingTop:20
+        paddingTop:10
     },
     card90: {
-        padding: 20,
+        padding: 10,
         backgroundColor: COLORS.white,
         borderRadius: 8,
         width: '90%',
@@ -31,6 +30,9 @@ export const styles = StyleSheet.create({
     },
     flexRowBetween:{
         flexDirection:'row',justifyContent:'space-between', marginVertical: 10
+    },  
+    flexColumnBetween:{
+        flexDirection:'column',justifyContent:'space-between'
     },  
     title: {
         fontSize: 24,

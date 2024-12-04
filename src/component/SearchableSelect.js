@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, FlatList, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SearchableSelect = ({ 
   label, 
@@ -19,8 +20,25 @@ const SearchableSelect = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(apiEndpoint)
-        const response = await axios.get(apiEndpoint);
+        let userInfo = await AsyncStorage.getItem('userInfo');
+        userInfo = JSON.parse(userInfo);
+        let token = userInfo.access_token.split('|')[1];
+
+        let toko_id = await AsyncStorage.getItem('TokoInfo');
+        toko_id = JSON.parse(toko_id);
+        let param = '';
+
+        if (toko_id && toko_id.toko_id) {
+          param = `?toko_id=${toko_id.toko_id}`;
+        }
+        
+        console.log(apiEndpoint+param)
+        const response = await axios.get(apiEndpoint+param, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
         setData(response.data.data);
         setFilteredData(response.data.data);
       } catch (error) {

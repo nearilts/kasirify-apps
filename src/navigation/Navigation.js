@@ -13,6 +13,10 @@ import LoginScreen from '../ui/Auth/LoginScreen';
 import RegisterScreen from '../ui/Auth/RegisterScreen';
 import ListToko from '../ui/Toko/ListToko';
 import BuatToko from '../ui/Toko/BuatToko';
+import ListCategory from '../ui/Master/Category/ListCategory';
+import BuatCategory from '../ui/Master/Category/BuatCategory';
+import ListProduct from '../ui/Master/Product/ListProduct';
+import BuatProduct from '../ui/Master/Product/BuatProduct';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -52,6 +56,12 @@ const Navigation = () => {
       
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="BuatToko" component={BuatToko} />
+
+      <Stack.Screen name="ListCategory" component={ListCategory} />
+      <Stack.Screen name="BuatCategory" component={BuatCategory} />
+      <Stack.Screen name="ListProduct" component={ListProduct} />
+      <Stack.Screen name="BuatProduct" component={BuatProduct} />
+
 
       <Stack.Screen name="HomeDetail" component={HomeDetail} />
       <Stack.Screen name="ListTabScreen" component={HomeScreen} />

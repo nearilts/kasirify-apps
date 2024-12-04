@@ -5,6 +5,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import COLORS from '../const/color'
 import HomeScreen from '../ui/Home/HomeScreen'
+import ListCategory from '../ui/Master/Category/ListCategory';
+import ListProduct from '../ui/Master/Product/ListProduct';
 
 const Drawer = createDrawerNavigator();
 
@@ -15,11 +17,11 @@ const SidebarNavigation = () => {
     screenOptions={({ route }) => ({
      drawerIcon: ({ focused, color, size }) => {
        let iconName;
-       if (route.name === "HomeScreen") {
+       if (route.name === "Home Screen") {
          iconName = "home";
-       } else if (route.name === "ListTabScreen") {
+       } else if (route.name === "Category Product") {
          iconName = "person";
-       } else if (route.name === "AddTabScreen") {
+       } else if (route.name === "Product") {
          iconName = "person";
        }
 
@@ -29,8 +31,8 @@ const SidebarNavigation = () => {
      tabBarInactiveTintColor: 'gray',
    })}>
      <Drawer.Screen name="Home Screen" component={HomeScreen} />
-     <Drawer.Screen name="ListTabScreen" component={HomeScreen} />
-     <Drawer.Screen name="AddTabScreen" component={HomeScreen} />
+     <Drawer.Screen name="Category Product" component={ListCategory} />
+     <Drawer.Screen name="Product" component={ListProduct} />
 
    </Drawer.Navigator>
 
