@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text,FlatList, TouchableOpacity  } from 'react-native';
 import useFetchData from '../../../utils/useFetchData';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -7,10 +7,11 @@ import { ButtonLong, FloatingButton } from '../../../component/FloatingButton';
 import COLORS from '../../../const/color';
 import { AuthContext } from '../../../context/AuthContext';
 import useDeleteData from '../../../utils/useDeleteData';
+import useFetchDataPage from '../../../utils/useFetchDataPage';
 
 const ListPelanggan = ({ navigation }) => {
   const {setTokos} = useContext(AuthContext);
-  const { datas: userData, isLoading, refetch } = useFetchData(navigation, 'customer');
+  const { datas: userData, isLoading, refetch } = useFetchDataPage(navigation, 'customer');
   const { deleteData, isLoading: loadingdelete } = useDeleteData();
   const handleDelete = async (productId) => {
     try {
@@ -23,6 +24,15 @@ const ListPelanggan = ({ navigation }) => {
       }
     } catch (error) {
       alert('Terjadi kesalahan saat menyimpan data.');
+    }
+  };
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  
+  const loadMoreData = async () => {
+    if (userData?.data?.next_page_url) {
+      setIsLoadingMore(true);
+      await fetchMore(userData.data.next_page_url);
+      setIsLoadingMore(false);
     }
   };
   const renderItem = ({ item }) => (
@@ -67,7 +77,13 @@ const ListPelanggan = ({ navigation }) => {
                 renderItem={renderItem} 
                 keyExtractor={(item) => item.id.toString()} 
             />
-            
+            {userData?.data?.next_page_url && (
+                <TouchableOpacity onPress={loadMoreData} style={styles.loadMoreButton}>
+                  <Text style={styles.loadMoreText}>
+                    {isLoadingMore ? 'Memuat lebih banyak...' : 'Load More'}
+                  </Text>
+                </TouchableOpacity>
+              )}
             </>
           ) : (
             <>

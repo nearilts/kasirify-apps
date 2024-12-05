@@ -101,6 +101,19 @@ export const styles = StyleSheet.create({
       color: 'white',
       fontWeight: 'bold',
     },
+
+    loadMoreButton: {
+        padding: 10,
+        alignItems: 'center',
+        backgroundColor: COLORS.primary,
+        borderRadius: 5,
+        margin: 10,
+      },
+      loadMoreText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 16,
+      },
 })
 
 export default styles;
