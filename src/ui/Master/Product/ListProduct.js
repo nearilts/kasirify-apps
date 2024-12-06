@@ -63,14 +63,7 @@ const ListProduct = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Spinner visible={isLoading} />
-      {isLoading ? (
-        <View style={styles.container}>
-          <Text style={styles.loadingText}>Loading...</Text>
-        </View>
-      ) : (
-        <>
-          {Array.isArray(userData?.data?.data) && userData.data?.data.length > 0 ? (
+      {Array.isArray(userData?.data?.data) && userData.data?.data.length > 0 ? (
             <>
               <FlatList
                 data={userData?.data?.data}
@@ -78,10 +71,13 @@ const ListProduct = ({ navigation }) => {
                 keyExtractor={(item) => item.id.toString()}
               />
               {userData?.data?.next_page_url && (
-                <TouchableOpacity onPress={loadMoreData} style={styles.loadMoreButton}>
+                <TouchableOpacity onPress={loadMoreData} style={{ marginTop:5, marginBottom:20,marginLeft:60, marginRight:60 }}>
+                <View style={{justifyContent:'center', alignItems:'center', height:50, backgroundColor:COLORS.primary, borderRadius:10}}>
                   <Text style={styles.loadMoreText}>
-                    {isLoadingMore ? 'Memuat lebih banyak...' : 'Load More'}
+                    {isLoadingMore ? 'Memuat lebih banyak...' : 'Load More Product'}
                   </Text>
+                </View>
+                
                 </TouchableOpacity>
               )}
             </>
@@ -90,8 +86,6 @@ const ListProduct = ({ navigation }) => {
               <Text style={styles.loadingText}>Tidak Ada Produk, Buat Produk Baru</Text>
             </View>
           )}
-        </>
-      )}
       <FloatingButton
         iconName="assignment-add"
         onPress={handleAddToko}

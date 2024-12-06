@@ -62,18 +62,11 @@ const ListPelanggan = ({ navigation }) => {
 
   return (
     <View style={{flex:1}}>
-      <Spinner visible={isLoading} />
       
-      {isLoading ? (
-        <View style={styles.container}>
-            <Text style={styles.loadingText}>Loading...</Text>
-        </View>
-      ) : (
-        <>
-          {Array.isArray(userData?.data.data) && userData.data.data.length > 0 ? (
+      {Array.isArray(userData?.data?.data) && userData.data.data.length > 0 ? (
             <>
             <FlatList
-                data={userData?.data.data} 
+                data={userData?.data?.data} 
                 renderItem={renderItem} 
                 keyExtractor={(item) => item.id.toString()} 
             />
@@ -93,8 +86,6 @@ const ListPelanggan = ({ navigation }) => {
             
             </>
           )}
-        </>
-      )}
         <FloatingButton
               iconName="assignment-add"
               onPress={handleAddToko}

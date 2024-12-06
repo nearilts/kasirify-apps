@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator, FlatList, Modal, ScrollView, TouchableOpacity } from 'react-native';
 import usePutData from '../../../utils/usePutData'; // Custom hook untuk update data
 import useFetchData from '../../../utils/useFetchData'; // Custom hook untuk fetch data produk
@@ -9,10 +9,12 @@ import BarcodeScanner from '../../../component/BarcodeScanner';
 const EditProduct = ({ navigation, route }) => {
   const { productId } = route.params; // Ambil productId dari route params
   const { datas: productData, isLoading: isFetching } = useFetchData(navigation, `product/${productId}`);
+ 
   const { putData, isLoading } = usePutData();
 
   const [formData, setFormData] = useState({
     category_id: '',
+    category_name: '',
     name: '',
     code: '',
     stock: '',
@@ -27,19 +29,21 @@ const EditProduct = ({ navigation, route }) => {
   const [scannerVisible, setScannerVisible] = useState(false);
   const [grosirEntry, setGrosirEntry] = useState({ name: '', min: '', price: '' });
 
+  
   useEffect(() => {
     if (productData?.data) {
-      setFormData({
-        ...formData,
-        ...productData.data, // Isi form dengan data produk yang ada
-      });
+  
+      setFormData((prev) => ({
+        ...prev,
+        ...productData?.data,
+      }));
     }
+   
   }, [productData]);
-
+  
   const handleInputChange = (key, value) => {
     setFormData({ ...formData, [key]: value });
   };
-
   const addGrosirPrice = () => {
     if (!grosirEntry.name || !grosirEntry.min || !grosirEntry.price) {
       alert('Lengkapi data grosir.');
@@ -97,6 +101,7 @@ const EditProduct = ({ navigation, route }) => {
             apiEndpoint={`${BASE_URL}api/category`}
             onSelect={(item) => handleInputChange('category_id', item.id)}
             selectedValue={formData.category_id}
+            selectedLabel={formData.category_name}
             placeholder="Select Category"
             labelKey="name"
             valueKey="id"

@@ -62,12 +62,10 @@ const useFetchDataPage = (navigation, endpoint) => {
       console.log('Current datas:', response.data);
   
       setDatas((prevDatas) => {
-        console.log('Previous datas:', prevDatas);
   
         const previousArray = Array.isArray(prevDatas?.data.data) ? prevDatas.data.data : [];
         const newArray = Array.isArray(response.data.data.data) ? response.data.data.data : [];
-        console.log('previousArray:', previousArray);
-        console.log('newArray:', newArray);
+        
         const newNextPageUrl = response.data.data.next_page_url;
         return {
             ...prevDatas, 
@@ -78,7 +76,6 @@ const useFetchDataPage = (navigation, endpoint) => {
             },
           };
       });
-      console.log('next ', response.data.data.next_page_url)
       setNextPageUrl(response.data.data.next_page_url);
     } catch (error) {
       console.error('Fetch more error:', error);

@@ -30,8 +30,8 @@ const useFetchData = (navigation, endpoint) => {
       });
 
 
-      console.log('response', response.data);
       setDatas(response.data);
+      console.log('response.data:', response.data);
 
 
     } catch (error) {

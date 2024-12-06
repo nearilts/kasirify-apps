@@ -9,6 +9,7 @@ import ListCategory from '../ui/Master/Category/ListCategory';
 import ListProduct from '../ui/Master/Product/ListProduct';
 import ListKasir from '../ui/Master/Kasir/ListCategory';
 import ListPelanggan from '../ui/Master/Pelanggan/ListPelanggan';
+import TransaksiScreen from '../ui/Pos/Penjualan/TransaksiScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -29,6 +30,8 @@ const SidebarNavigation = () => {
         iconName = "person";
       }else if (route.name === "Pelanggan") {
         iconName = "person";
+      }else if (route.name === "Transaksi") {
+        iconName = "person";
       }
 
        return <Icon name={iconName} size={size} color={color} />;
@@ -41,6 +44,7 @@ const SidebarNavigation = () => {
      <Drawer.Screen name="Product" component={ListProduct} />
      <Drawer.Screen name="Kasir" component={ListKasir} />
      <Drawer.Screen name="Pelanggan" component={ListPelanggan} />
+     <Drawer.Screen name="Transaksi" component={TransaksiScreen} />
 
    </Drawer.Navigator>
 

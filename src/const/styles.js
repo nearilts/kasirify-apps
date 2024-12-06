@@ -31,6 +31,9 @@ export const styles = StyleSheet.create({
     flexRowBetween:{
         flexDirection:'row',justifyContent:'space-between', marginVertical: 10
     },  
+    flexRowaround:{
+        flexDirection:'row',justifyContent:'space-around',margin:5
+    },  
     flexColumnBetween:{
         flexDirection:'column',justifyContent:'space-between'
     },  
@@ -55,10 +58,10 @@ export const styles = StyleSheet.create({
 
     floatingButton: {
         position: 'absolute',
-        bottom: 30,
+        bottom: 80,
         right: 30,
         backgroundColor: COLORS.primary,
-        width: 150,
+        width: 190,
         height: 50,
         borderRadius: 25,
         justifyContent: 'center',
@@ -113,6 +116,18 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
         fontSize: 16,
+      },
+      flexInput: {
+        flex: 1, // Membuat input mengisi ruang kosong
+        marginRight: 10, // Memberi jarak antara input dan tombol
+      },
+      input: {
+        height: 50,
+        borderWidth: 1,
+        backgroundColor:COLORS.white,
+        borderColor: '#ccc',
+        padding: 10,
+        borderRadius: 5,
       },
 })
 

@@ -7,12 +7,13 @@ const SearchableSelect = ({
   label, 
   apiEndpoint, 
   onSelect, 
-  selectedValue, 
+  selectedValue,  
+  selectedLabel,
   placeholder, 
   labelKey = 'name', 
   valueKey = 'id' 
 }) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(selectedLabel || '');
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [isDropdownVisible, setDropdownVisible] = useState(false);

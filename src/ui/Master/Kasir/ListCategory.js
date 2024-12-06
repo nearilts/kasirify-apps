@@ -51,15 +51,8 @@ const ListKasir = ({ navigation }) => {
 
   return (
     <View style={{flex:1}}>
-      <Spinner visible={isLoading} />
       
-      {isLoading ? (
-        <View style={styles.container}>
-            <Text style={styles.loadingText}>Loading...</Text>
-        </View>
-      ) : (
-        <>
-          {Array.isArray(userData?.data) && userData.data.length > 0 ? (
+      {Array.isArray(userData?.data) && userData.data.length > 0 ? (
             <>
             <FlatList
                 data={userData?.data} 
@@ -76,8 +69,6 @@ const ListKasir = ({ navigation }) => {
             
             </>
           )}
-        </>
-      )}
         <FloatingButton
               iconName="assignment-add"
               onPress={handleAddToko}
