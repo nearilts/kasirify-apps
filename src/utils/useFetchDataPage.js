@@ -34,7 +34,7 @@ const useFetchDataPage = (navigation, endpoint) => {
       });
 
       setDatas(response.data); // Set data awal
-      setNextPageUrl(response.data.data.next_page_url); // Simpan URL halaman berikutnya
+      setNextPageUrl(response.data.data?.next_page_url); // Simpan URL halaman berikutnya
     } catch (error) {
       console.error('Fetch error:', error);
     } finally {

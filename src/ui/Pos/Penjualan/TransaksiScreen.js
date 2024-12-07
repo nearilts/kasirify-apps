@@ -47,6 +47,10 @@ const TransaksiScreen = ({ navigation  }) => {
     <ProductItem
         item={item}
         onPress={(id, qty) => handleAddCart(id, qty)}
+        color={COLORS.primary2}
+        icon="add-shopping-cart"
+        onUpdate={(id, qty) => handleAddCart(id, qty)}
+
       />
   );
 
@@ -152,7 +156,19 @@ const TransaksiScreen = ({ navigation  }) => {
         <View style={{height: 50, marginLeft:15, marginRight:15}}>
           <Button title="Scan Barcode" onPress={() => setScannerVisible(true)} />
         </View>
-        <Modal visible={scannerVisible} animationType="slide">
+            <View style={{marginLeft:15, marginRight:15, marginBottom:15, backgroundColor:COLORS.primary, borderRadius:10}}>
+              <TouchableOpacity style={{height: 50, width:'100%', justifyContent: 'center',alignItems:'center'}} activeOpacity={0.8}  onPress={() => handleAddToko()}>
+            
+                  <View style={{flexDirection:'row'}}>
+                  <Icon name="assignment-add" size={22} color={COLORS.white} />
+                  <Text style={{color:COLORS.white, fontWeight:'bold', fontSize:18}}>
+                      Tambah Produk
+                  </Text>
+              </View>
+          
+              </TouchableOpacity>
+          </View>
+          <Modal visible={scannerVisible} animationType="slide">
         <BarcodeScanner
           onCodeScanned={(code) => {
             setScannerVisible(false);
@@ -203,7 +219,7 @@ const TransaksiScreen = ({ navigation  }) => {
           </View>
         )}
       </ScrollView>
-            <TouchableOpacity  style={[styles.loadMoreButton, {flexDirection:'row', justifyContent:'center'}]}>
+            <TouchableOpacity  style={[styles.loadMoreButton, {flexDirection:'row', justifyContent:'center'}]} onPress={() => navigation.navigate("KeranjangScreen")}>
             <Icon name="shopping-cart" size={22} color={COLORS.white} />
               <Text style={styles.loadMoreText}>
                 Keranjang ({Datacart?.data.sub_total_qty}) - ({formatPrice(Datacart?.data.sub_total_amount)})

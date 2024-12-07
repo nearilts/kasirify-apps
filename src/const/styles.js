@@ -18,6 +18,16 @@ export const styles = StyleSheet.create({
         alignContent:'flex-start',
         paddingTop:10
     },
+    card: {
+        padding: 10,
+        backgroundColor: COLORS.white,
+        borderRadius: 8,
+        shadowColor: COLORS.dark,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 1.5,
+        elevation: 5,
+    },
     card90: {
         padding: 10,
         backgroundColor: COLORS.white,

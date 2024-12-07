@@ -25,6 +25,9 @@ import EditProduct from '../ui/Master/Product/EditProduct';
 import UbahPelanggan from '../ui/Master/Pelanggan/UbahPelanggan';
 import UbahKasir from '../ui/Master/Kasir/UbahKasir';
 import UbahCategory from '../ui/Master/Category/UbahCategory';
+import KeranjangScreen from '../ui/Pos/Penjualan/KeranjangScreen';
+import PaymentScreen from '../ui/Pos/Penjualan/PaymentScreen';
+import SettingPrinter from '../ui/Setting/SettingPrinter';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -73,6 +76,9 @@ const Navigation = () => {
       <Stack.Screen name="UbahKasir" component={UbahKasir} />
       <Stack.Screen name="BuatPelanggan" component={BuatPelanggan} />
       <Stack.Screen name="UbahPelanggan" component={UbahPelanggan} />
+      <Stack.Screen name="KeranjangScreen" component={KeranjangScreen} />
+      <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
+      <Stack.Screen name="SettingPrinter" component={SettingPrinter} />
 
 
       <Stack.Screen name="HomeDetail" component={HomeDetail} />

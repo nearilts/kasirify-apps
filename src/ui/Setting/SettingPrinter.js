@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, Button, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import ThermalPrinterModule from 'react-native-thermal-printer';
+import { AuthContext } from '../../context/AuthContext';
+import { PrintInfo } from '../../utils/GetDataSession';
 
-const HomeDetail = ({ navigation }) => {
-  const [devices, setDevices] = useState([]);
-  const [selectedDevice, setSelectedDevice] = useState(null);
-  // Function to scan Bluetooth devices
+const SettingPrinter = ({ navigation }) => {
+    const [devices, setDevices] = useState([]);
+    const [selectedDevice, setSelectedDevice] = useState(null);
+    const {setPrints} = useContext(AuthContext);
+    const {printDevice} = PrintInfo();
+    console.log('printDevice: ', printDevice)
+
+
   const scanDevices = async () => {
     try {
       const availableDevices = await ThermalPrinterModule.getBluetoothDeviceList();
@@ -16,77 +22,29 @@ const HomeDetail = ({ navigation }) => {
       alert('Error', `Gagal memindai perangkat: ${error.message}`);
     }
   };
-  const orderData = {
-    store: "Kasirify Store",
-    address: "Jl. Contoh No. 123",
-    items: [
-      { name: "Produk A asdas", qty: 2, price: 50000 },
-      { name: "Produk B asd", qty: 1, price: 30000 },
-      { name: "Produk C sda asdas asdasd", qty: 3, price: 15000 },
-    ],
-    total: 145000,
-    thanksMessage: "Terima Kasih!\nSelamat Berbelanja!",
-  };
+  
   // Pilih perangkat
   const selectDevice = (device) => {
     setSelectedDevice(device);
-    alert('Device Selected', `Anda memilih: ${device.deviceName}`);
+    setPrints(device)
+    alert(`Anda memilih: ${device.deviceName}`);
   };
-
-  // Function to print test text
+  const orderData = {
+    store: "Kasirify Store",
+    address: "Testing Print, Success",
+    
+    thanksMessage: "Terima Kasih!",
+  };
   const printText = async () => {
     if (!selectedDevice) {
       alert('No Device', 'Silakan pilih perangkat terlebih dahulu.');
       return;
     }
-
-    const formatCurrency = (value) => `Rp ${value.toLocaleString('id-ID')}`;
-
-    const wrapText = (text, maxLength) => {
-      const words = text.split(' ');
-      let lines = [];
-      let currentLine = '';
   
-      words.forEach((word) => {
-        if ((currentLine + word).length <= maxLength) {
-          currentLine += word + ' ';
-        } else {
-          lines.push(currentLine.trim());
-          currentLine = word + ' ';
-        }
-      });
-  
-      if (currentLine) lines.push(currentLine.trim());
-  
-      return lines;
-    };
-  
-    // Header struk
     let payload = `\x1B\x33\x01
         ${orderData.store}
         ${orderData.address}
-  ------------------------------
-  Nama        Qty         Harga
-  ------------------------------\n`;
-  
-    // Menambahkan setiap item ke dalam payload
-    orderData.items.forEach((item) => {
-      const wrappedName = wrapText(item.name, 13);
-      wrappedName.forEach((line, index) => {
-        if (index === 0) {
-          payload += `${line.padEnd(15)} ${item.qty.toString().padEnd(3)} ${formatCurrency(item.price)}\n`;
-        } else {
-          payload += `${line}\n`;
-        }
-      });
-    });
-  
-    // Menambahkan total dan pesan terima kasih
-    payload += 
-`--------------------------------
-Total:       ${formatCurrency(orderData.total)}
---------------------------------
-${orderData.thanksMessage}`;
+        ${orderData.thanksMessage}`;
   
     try {
       await ThermalPrinterModule.printBluetooth({
@@ -94,9 +52,10 @@ ${orderData.thanksMessage}`;
         device_name: selectedDevice.deviceName,
         address: selectedDevice.macAddress,
       });
-      Alert.alert('Success', 'Cetak berhasil.');
+      alert('Success', 'Cetak berhasil.');
+      navigation.goBack()
     } catch (error) {
-      Alert.alert('Error', `Gagal mencetak: ${error.message}`);
+      alert('Error', `Gagal mencetak: ${error.message}`);
     }
   };
 
@@ -120,13 +79,13 @@ ${orderData.thanksMessage}`;
         />
       </>
     )}
-
-    {selectedDevice && (
+    {selectedDevice  && (
       <View style={styles.printSection}>
         <Text style={styles.selectedDevice}>Perangkat Terpilih: {selectedDevice.deviceName}</Text>
-        <Button title="Cetak Teks" onPress={printText} />
+        <Button title="Test Print" onPress={printText} />
       </View>
     )}
+   
   </View>
   );
 };
@@ -163,4 +122,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default HomeDetail;
+export default SettingPrinter;

@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 export const TokoInfo = () => {
   const [toko_id, settokoinfo] = useState(null);
@@ -22,4 +23,26 @@ export const TokoInfo = () => {
 };
 
 
-  
+export const PrintInfo = () => {
+  const [printDevice, setDeviceInfo] = useState(null);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const fetchPrintInfo = async () => {
+        try {
+          const response = await AsyncStorage.getItem('PrintInfo');
+          console.log('manggil PrintInfo:', response);
+          if (response) {
+            setDeviceInfo(JSON.parse(response)); // Parse JSON string to object
+          }
+        } catch (error) {
+          console.error('Failed to fetch PrintInfo:', error);
+        }
+      };
+
+      fetchPrintInfo(); // Call when page is focused
+    }, []) // Dependencies
+  );
+
+  return { printDevice };
+};

@@ -10,6 +10,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState({});
   const [TokoInfo, setTokoInfo] = useState({});
+  const [PrintInfo, setPrintInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [splashLoading, setSplashLoading] = useState(false)
 
@@ -177,6 +178,34 @@ export const AuthProvider = ({ children }) => {
       }
     };
 
+    const setPrints = (device) => {
+      console.log("setPrintInfo :", device)
+      setPrintInfo(device);
+  
+      AsyncStorage.setItem('PrintInfo', JSON.stringify(device))
+      // AsyncStorage.removeItem('PrintInfo') 
+    };
+
+    const isPrintOnStore = async () => {
+      try {
+    
+        let PrintInfo = await AsyncStorage.getItem('PrintInfo');
+    
+        if (PrintInfo) {
+          PrintInfo = JSON.parse(PrintInfo);
+          if (PrintInfo.id) {
+            setPrintInfo(PrintInfo);
+          } else {
+            console.error('PrintInfo tidak ditemukan di PrintInfo');
+            setPrintInfo({});
+          }
+        } 
+    
+      } catch (error) {
+        console.error('Error di isLoggedInStore:', error);
+        setSplashLoading(false);
+      }
+    };
     useEffect(() => {
       isLoggedIn();
       isLoggedInStore();
@@ -192,7 +221,9 @@ export const AuthProvider = ({ children }) => {
       logouts,
       registers,
       setTokos,
-      logoutTokos
+      logoutTokos,
+      setPrints,
+      isPrintOnStore
 
      }}>
       {children}

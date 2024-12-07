@@ -21,7 +21,7 @@ const useFetchData = (navigation, endpoint) => {
       if (toko_id && toko_id.toko_id) {
         param = `?toko_id=${toko_id.toko_id}`;
       }
-
+     
       console.log('url', `${BASE_URL}api/${endpoint}${param}`);
       const response = await axios.get(`${BASE_URL}api/${endpoint}${param}`, {
         headers: {
