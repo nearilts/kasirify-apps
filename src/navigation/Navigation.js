@@ -65,16 +65,12 @@ const Navigation = () => {
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="BuatToko" component={BuatToko} />
 
-      <Stack.Screen name="ListCategory" component={ListCategory} />
       <Stack.Screen name="BuatCategory" component={BuatCategory} />
       <Stack.Screen name="UbahCategory" component={UbahCategory} />
-      <Stack.Screen name="ListProduct" component={ListProduct} />
       <Stack.Screen name="BuatProduct" component={BuatProduct} />
       <Stack.Screen name="EditProduct" component={EditProduct} />
-      <Stack.Screen name="ListKasir" component={ListKasir} />
       <Stack.Screen name="BuatKasir" component={BuatKasir} />
       <Stack.Screen name="UbahKasir" component={UbahKasir} />
-      <Stack.Screen name="ListPelanggan" component={ListPelanggan} />
       <Stack.Screen name="BuatPelanggan" component={BuatPelanggan} />
       <Stack.Screen name="UbahPelanggan" component={UbahPelanggan} />
 

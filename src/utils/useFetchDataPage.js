@@ -8,22 +8,26 @@ const useFetchDataPage = (navigation, endpoint) => {
   const [isLoading, setIsLoading] = useState(true);
   const [nextPageUrl, setNextPageUrl] = useState(null);
 
-  const fetchDatas = async (url) => {
+  const fetchDatas = async (additionalParams = '') => {
     setIsLoading(true);
     try {
       let userInfo = await AsyncStorage.getItem('userInfo');
       userInfo = JSON.parse(userInfo);
       let token = userInfo.access_token.split('|')[1];
+      console.log(additionalParams)
 
       let toko_id = await AsyncStorage.getItem('TokoInfo');
       toko_id = JSON.parse(toko_id);
       let param = '';
-
       if (toko_id && toko_id.toko_id) {
         param = `?toko_id=${toko_id.toko_id}`;
       }
-
-      const response = await axios.get(url || `${BASE_URL}api/${endpoint}${param}`, {
+      if (additionalParams) {
+        param += param ? `${additionalParams}` : `?${additionalParams}`;
+      }
+     
+      console.log(`${BASE_URL}api/${endpoint}${param}`)
+      const response = await axios.get(`${BASE_URL}api/${endpoint}${param}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -94,7 +98,7 @@ const useFetchDataPage = (navigation, endpoint) => {
     };
   }, [navigation, endpoint]);
 
-  return { datas, isLoading, refetch: () => fetchDatas(), fetchMore };
+  return { datas, isLoading, refetch: (params) => fetchDatas(params), fetchMore };
 };
 
 export default useFetchDataPage;

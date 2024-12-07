@@ -89,6 +89,7 @@ const SearchableSelect = ({
               <Text style={styles.item}>{item[labelKey]}</Text>
             </TouchableOpacity>
           )}
+          nestedScrollEnabled={true} // Tambahkan ini
         />
       )}
     </View>

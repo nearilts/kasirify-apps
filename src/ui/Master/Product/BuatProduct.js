@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator, FlatList, Modal, ScrollView, TouchableOpacity  } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator, FlatList, Modal, TouchableOpacity,KeyboardAvoidingView,ScrollView  } from 'react-native';
 import usePostData from '../../../utils/usePostData';
 import SearchableSelect from '../../../component/SearchableSelect';
 import { BASE_URL } from '../../../const/url';
@@ -67,7 +67,8 @@ const BuatProduct = ({ navigation }) => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
       <Text style={styles.title}>Buat Product</Text>
 
       <SearchableSelect
@@ -230,7 +231,8 @@ const BuatProduct = ({ navigation }) => {
         </View>
         
       )}
-    </ScrollView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

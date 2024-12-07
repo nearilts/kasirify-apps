@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
     },
     container : {
         alignItems:'center',
+        alignContent:'flex-start',
         paddingTop:10
     },
     card90: {
@@ -29,7 +30,7 @@ export const styles = StyleSheet.create({
         elevation: 5,
     },
     flexRowBetween:{
-        flexDirection:'row',justifyContent:'space-between', marginVertical: 10
+        flexDirection:'row',justifyContent:'space-between',
     },  
     flexRowaround:{
         flexDirection:'row',justifyContent:'space-around',margin:5
