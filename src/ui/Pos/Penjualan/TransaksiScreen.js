@@ -124,6 +124,10 @@ const TransaksiScreen = ({ navigation  }) => {
     }
   }, [cekKasir]);
 
+  const CreateKasir = () => {
+    setIsModalVisible(!isModalVisible)
+    navigation.navigate("BuatKasir")
+  }
 
   return (
     <View style={{ flex: 1 }}>
@@ -134,6 +138,7 @@ const TransaksiScreen = ({ navigation  }) => {
             onKasirUpdated={() => {
               fetchDatas();
             }}
+            onsetModal={() => CreateKasir()}
           />
         </Modal>
 

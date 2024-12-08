@@ -4,7 +4,7 @@ import usePostData from '../../../utils/usePostData';
 import SearchableSelect from '../../../component/SearchableSelect';
 import { BASE_URL } from '../../../const/url';
 
-const BukaKasir = ({ navigation,onKasirUpdated }) => {
+const BukaKasir = ({ navigation,onKasirUpdated,onsetModal }) => {
   const { postData, isLoading } = usePostData();
   const [formData, setFormData] = useState({
     amount_start: '',
@@ -66,6 +66,10 @@ const BukaKasir = ({ navigation,onKasirUpdated }) => {
       ) : (
         <Button title="Submit" onPress={handleNext} />
       )}
+      <View style={{marginTop:20}}>
+      <Button title="Create Kasir" onPress={() => onsetModal()} />
+
+      </View>
     </View>
   );
 };

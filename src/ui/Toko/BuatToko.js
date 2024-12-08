@@ -7,6 +7,7 @@ import { BASE_URL } from '../../const/url';
 const BuatToko = ({ navigation }) => {
   const { postData, isLoading } = usePostData();
   const [formData, setFormData] = useState({
+    address: '',
     name: '',
     phone: '',
     country: '',
@@ -95,7 +96,14 @@ const BuatToko = ({ navigation }) => {
         labelKey="city"
         valueKey="id"
       />
+      <Text>Address</Text>
 
+        <TextInput
+          style={styles.input}
+          placeholder="Address"
+          value={formData.address}
+          onChangeText={(value) => handleInputChange('address', value)}
+        />
       {isLoading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (

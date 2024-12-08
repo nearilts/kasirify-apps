@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet,ScrollView } from 'react-native';
 import useFetchData from '../../utils/useFetchData';
 import Spinner from 'react-native-loading-spinner-overlay';
 import UseGetData from '../../utils/UseGetData';
@@ -7,15 +7,19 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../../context/AuthContext';
 import { PrintInfo } from '../../utils/GetDataSession';
 import ThermalPrinterModule from 'react-native-thermal-printer';
+import Carousel from '../../component/Carousel';
+import styles from '../../const/styles';
+import ButtomIcon from '../../component/ButtomIcon';
+import COLORS from '../../const/color';
+import ButtonCircle from '../../component/ButtonCircle';
+import { formatNumber } from '../../utils/Helper';
 
 const HomeScreen = ({ navigation }) => {
-  const { datas: userData, isLoading } = useFetchData(navigation, 'user');
+  const { datas: Datas, isLoading } = useFetchData(navigation, 'home');
  
   const {logouts,logoutTokos} = useContext(AuthContext);
   const {printDevice} = PrintInfo();
-
   
-
   const orderData = {
     store: "Kasirify Store",
     address: "Testing Print, Success",
@@ -47,66 +51,114 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Spinner visible={isLoading} />
+    <ScrollView style={{backgroundColor:COLORS.white}}>
+      <Carousel />
+
+      <View style={[styles.containers, {top : -50}]}>
+      <View style={styles.card90}>
+          <View style={styles.flexRowaround}>
+              <View style={styles.flexColumnBetween}> 
+                <Text>
+                  Saldo PPOB
+                </Text>
+                <Text style={styles.text18}>
+                  Rp. {formatNumber(Datas?.data.toko.saldo)}
+                </Text>
+              </View>
+              {/* <View style={{width:1, height:45, backgroundColor:COLORS.dark}}>
+                
+              </View> */}
+              <View style={styles.flexColumnBetween}> 
+                <Text>
+                    Saldo Toko
+                </Text>
+                <Text style={styles.text18}>
+                    Rp. {formatNumber(Datas?.data.toko.saldo_toko)}
+                </Text>
+              </View>
+          </View>
+        </View>
+    </View>
+    <View style={[styles.containers, {top : -40}]}>
+      <View style={styles.card90}>
+          <View style={styles.flexRowaround}>
+              <View style={styles.flexColumnBetween}> 
+                <Text>
+                  Omset Hari Ini
+                </Text>
+                <Text style={styles.text18}>
+                  Rp. {formatNumber(Datas?.data.total_amount_today)}
+                </Text>
+              </View>
+              <View style={{width:1, height:45, backgroundColor:COLORS.dark}}>
+                
+              </View>
+              <View style={styles.flexColumnBetween}> 
+                <Text>
+                    Profit Hari Ini
+                </Text>
+                <Text style={styles.text18}>
+                    Rp. {formatNumber(Datas?.data.total_profit_today)}
+                </Text>
+              </View>
+          </View>
+        </View>
+    </View>
+
+      <View style={{top : -30}}>
+        <ButtomIcon />
+      </View>
       
-      {isLoading ? (
-        <Text style={styles.loadingText}>Loading...</Text>
-      ) : (
-        <>
-          <Text style={styles.title}>Home Screen</Text>
-          <Text style={styles.title}>{userData?.email}</Text>
+      <View style={[styles.containers,{marginBottom:30}]}>
+        <View style={styles.card90}>
+        <Text style={[styles.text18,{marginLeft:20, fontWeight:'bold'}]}>Setting</Text>
+          <View style={styles.flexRowaround}>
           {printDevice?.deviceName ? (
             <>
-            <View style={{margin:10}}>
-              <Text>Print : {printDevice?.deviceName}</Text>
-                <View style={{margin:10}}>
-                  <Button 
-                        title="Print"
-                        onPress={() => printText()}
-                    />
-                </View>
-            </View>
-              
+             <ButtonCircle
+                  iconName="print"
+                  color={COLORS.primary2} 
+                  onPress={() => Print()} 
+                  label="Test Print" 
+              />
             </>
             )
-          
             : (
               <>
-              <View style={styles.container}>
-                <Button 
-                title="Go to Setting Printeer"
-                onPress={() => navigation.navigate('SettingPrinter')}
+               <ButtonCircle
+                  iconName="print"
+                  color={COLORS.primary2} 
+                  onPress={() => navigation.navigate("SettingPrinter")} 
+                  label="Setting" 
               />
-              </View>
-              
               </>
             )}
 
-         
 
-          <View style={{marginTop:20, marginBottom:20}}>
-          <Button 
-              
-              title="Logout Toko"
-              onPress={() => {logoutTokos()}}
-            />
+             
+              <ButtonCircle
+                  iconName="unarchive"
+                  color={COLORS.primary2} 
+                  onPress={() => logoutTokos()} 
+                  label="Ganti Toko" 
+              />
+              <ButtonCircle
+                  iconName="logout"
+                  color={COLORS.primary2} 
+                  onPress={() => logouts()} 
+                  label="Logout" 
+              />
           </View>
-         
+          
+          
+        </View>
+      </View>
 
-          <Button 
-            title="Logout Akun"
-            onPress={() => {logouts()}}
-          />
-
-
-        </>
-      )}
-    </View>
+    </ScrollView>
   );
 };
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',

@@ -18,6 +18,10 @@ export const styles = StyleSheet.create({
         alignContent:'flex-start',
         paddingTop:10
     },
+    containers : {
+        alignItems:'center',
+        alignContent:'flex-start',
+    },
     card: {
         padding: 10,
         backgroundColor: COLORS.white,
