@@ -9,34 +9,24 @@ import { Linking } from 'react-native';
 import usePostData from '../../../utils/usePostData';
 import { PrintInfo } from '../../../utils/GetDataSession';
 import ThermalPrinterModule from 'react-native-thermal-printer';
+import PrinterComponent from '../../../component/PrinterComponent';
 
 const PaymentScreen = ({ navigation, route }) => {
     console.log(route.params)
     let userData = route.params;
     
-    const {PrintDevice} = PrintInfo();
+    const {printDevice} = PrintInfo();
 
+    const { datas: Datas, isLoading,refetch } = useFetchData(navigation, `transaksi/${userData.id}/cek_transaction`);
 
     const handleOpenURL = (url) => {
         Linking.openURL(url).catch(err => console.error("Couldn't load page", err));
     };
-    const handlePrint = () => {
-       
-    };
+   
     const { postData, isLoading:postdata } = usePostData();
     const handlePostAddcart = async () => {
-        try {
-          const response = await postData(`transaksi/${userData.id}/cek_transaction`, {snap_token : userData.snap_token});
-          if (response.meta?.code === 200) {
-            alert(response.data.status);
-           
-          } else {
-            alert(response.data?.messages);
-            cekCartLagi()
-          }
-        } catch (error) {
-          alert('Terjadi kesalahan ');
-        }
+      refetch()
+      console.log(Datas)
       };
   return (
     <View style={styles.container}>
@@ -67,27 +57,9 @@ const PaymentScreen = ({ navigation, route }) => {
             </>
             )}
           </View>
+         
 
-
-          {PrintDevice?.deviceName && (
-            <>
-            <View style={{margin:10}}>
-              <Text>Print : {PrintDevice?.deviceName}</Text>
-                <View style={{margin:10}}>
-                  <Button 
-                        title="Print"
-                        onPress={() => handlePrint()}
-                    />
-                </View>
-            </View>
-            
-              
-            </>
-            )}
-            <Button 
-                    title="Setting Printer"
-                    onPress={() => navigation.navigate("SettingPrinter")}
-                />
+          <PrinterComponent printData={Datas} navigation={navigation}/>
          
     </View>
   );

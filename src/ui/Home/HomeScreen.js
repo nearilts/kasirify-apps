@@ -75,9 +75,9 @@ const HomeScreen = ({ navigation }) => {
               <>
               <View style={styles.container}>
                 <Button 
-                  title="Go to Setting Printeer"
-                  onPress={() => navigation.navigate('SettingPrinter')}
-                />
+                title="Go to Setting Printeer"
+                onPress={() => navigation.navigate('SettingPrinter')}
+              />
               </View>
               
               </>
