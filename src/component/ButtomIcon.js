@@ -19,9 +19,9 @@ const ButtomIcon = () => {
         { id: '3', iconName: 'countertops', color: COLORS.red, label:'Kasir',onclick: 'Kasir' },
         { id: '4', iconName: 'face', color: COLORS.orange, label:'Pelanggan',onclick: 'Pelanggan' },
         { id: '5', iconName: 'shopping-cart', color: COLORS.navy, label:'POS',onclick: 'Transaksi' },
-        { id: '6', iconName: 'point-of-sale', color: COLORS.darkBlue, label:'PPOB',onclick: 'VoucherPpob' },
-        { id: '7', iconName: 'account-balance-wallet', color: COLORS.green, label:'Top Up ',onclick: 'Ticket' },
-        { id: '8', iconName: 'login', color: COLORS.bronze, label:'Tarik Saldo',onclick: 'SemuaPpob' },
+        // { id: '6', iconName: 'point-of-sale', color: COLORS.darkBlue, label:'PPOB',onclick: 'VoucherPpob' },
+        // { id: '7', iconName: 'account-balance-wallet', color: COLORS.green, label:'Top Up ',onclick: 'Ticket' },
+        // { id: '8', iconName: 'login', color: COLORS.bronze, label:'Tarik Saldo',onclick: 'SemuaPpob' },
     ];
     
         const renderItem = ({ item }) => (

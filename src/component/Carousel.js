@@ -10,10 +10,11 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import COLORS from '../const/color';
+import { BASE_URL } from '../const/url';
 
 const Carousel = ({ navigation }) => {
     const flatlistRef = useRef();
-    const url = 'https://cozzy.id/api/';
+    const url = BASE_URL;
     
     const screenWidth = Dimensions.get("window").width;
     const screenHeight = Dimensions.get("window").height;
@@ -22,8 +23,9 @@ const Carousel = ({ navigation }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
-        axios.get(url+'slider')
+        axios.get(url+'api/slider')
             .then(response => {
+                console.log(response.data.data.data)
                 setHome({ sliders: response.data.data.data });
             })
             .catch(error => {
@@ -45,7 +47,6 @@ const Carousel = ({ navigation }) => {
                 });
             }
         }, 2000);
-
         return () => clearInterval(interval);
     }, [currentIndex, home.sliders.length]);
 

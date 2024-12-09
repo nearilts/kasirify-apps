@@ -138,16 +138,38 @@ const HomeScreen = ({ navigation }) => {
              
               <ButtonCircle
                   iconName="unarchive"
-                  color={COLORS.primary2} 
+                  color={COLORS.pink} 
                   onPress={() => logoutTokos()} 
                   label="Ganti Toko" 
               />
               <ButtonCircle
                   iconName="logout"
-                  color={COLORS.primary2} 
+                  color={COLORS.pink} 
                   onPress={() => logouts()} 
                   label="Logout" 
               />
+
+          {Datas?.data.kasir?.amount_start ? (
+            <>
+             <ButtonCircle
+                  iconName="point-of-sale"
+                  color={COLORS.primary2} 
+                  onPress={() => navigation.navigate("TutupKasir")} 
+                  label="Tutup Kasir" 
+              />
+            </>
+            )
+            : (
+              <>
+               <ButtonCircle
+                  iconName="point-of-sale"
+                  color={COLORS.primary2} 
+                  onPress={() => navigation.navigate("OpenCashier")} 
+                  label="Buka Kasir" 
+              />
+              </>
+            )}
+
           </View>
           
           

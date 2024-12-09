@@ -28,6 +28,8 @@ import UbahCategory from '../ui/Master/Category/UbahCategory';
 import KeranjangScreen from '../ui/Pos/Penjualan/KeranjangScreen';
 import PaymentScreen from '../ui/Pos/Penjualan/PaymentScreen';
 import SettingPrinter from '../ui/Setting/SettingPrinter';
+import TutupKasir from '../ui/Pos/Penjualan/TutupKasir';
+import OpenCashier from '../ui/Pos/Penjualan/OpenCashier';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -79,6 +81,8 @@ const Navigation = () => {
       <Stack.Screen name="KeranjangScreen" component={KeranjangScreen} />
       <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
       <Stack.Screen name="SettingPrinter" component={SettingPrinter} />
+      <Stack.Screen name="TutupKasir" component={TutupKasir} />
+      <Stack.Screen name="OpenCashier" component={OpenCashier} />
 
 
       <Stack.Screen name="HomeDetail" component={HomeDetail} />
