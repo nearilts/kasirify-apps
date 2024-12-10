@@ -3,6 +3,7 @@ import { View, Text, Button, StyleSheet, FlatList, TouchableOpacity } from 'reac
 import ThermalPrinterModule from 'react-native-thermal-printer';
 import { AuthContext } from '../../context/AuthContext';
 import { PrintInfo } from '../../utils/GetDataSession';
+import COLORS from '../../const/color';
 
 const SettingPrinter = ({ navigation }) => {
     const [devices, setDevices] = useState([]);
@@ -73,7 +74,7 @@ const SettingPrinter = ({ navigation }) => {
           keyExtractor={(item) => item.macAddress}
           renderItem={({ item }) => (
             <TouchableOpacity style={styles.deviceItem} onPress={() => selectDevice(item)}>
-              <Text>{item.deviceName} ({item.macAddress})</Text>
+              <Text  style={styles.title}>{item.deviceName} ({item.macAddress})</Text>
             </TouchableOpacity>
           )}
         />
@@ -100,10 +101,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    color:COLORS.dark,
   },
   subtitle: {
     fontSize: 18,
     marginTop: 20,
+    color:COLORS.dark,
     marginBottom: 10,
   },
   deviceItem: {
@@ -117,7 +120,9 @@ const styles = StyleSheet.create({
   },
   selectedDevice: {
     fontSize: 16,
-    marginBottom: 10,
+    marginBottom: 10,    
+    color:COLORS.dark,
+
   },
 
 });

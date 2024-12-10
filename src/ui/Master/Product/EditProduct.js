@@ -108,17 +108,19 @@ const EditProduct = ({ navigation, route }) => {
             valueKey="id"
           />
 
-          <Text>Name</Text>
+          <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Name</Text>
           <TextInput
+        placeholderTextColor={COLORS.dark}
             style={styles.input}
             placeholder="Product Name"
             value={formData.name}
             onChangeText={(value) => handleInputChange('name', value)}
           />
 
-          <Text>Code</Text>
+          <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Code</Text>
           <View style={styles.row}>
             <TextInput
+        placeholderTextColor={COLORS.dark}
               style={[styles.input, styles.flexInput]}
               placeholder="Scan or enter manually"
               value={formData.code}
@@ -137,8 +139,9 @@ const EditProduct = ({ navigation, route }) => {
             />
           </Modal>
 
-          <Text>Stock</Text>
+        <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Stock</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Stock"
         value={formData.stock}
@@ -146,8 +149,9 @@ const EditProduct = ({ navigation, route }) => {
         keyboardType="number-pad"
       />
 
-      <Text>Basic Price</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Basic Price</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Basic Price"
         value={formData.basic_price}
@@ -155,8 +159,9 @@ const EditProduct = ({ navigation, route }) => {
         keyboardType="number-pad"
       />
 
-      <Text>Selling Price</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Selling Price</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Selling Price"
         value={formData.selling_price}
@@ -164,16 +169,18 @@ const EditProduct = ({ navigation, route }) => {
         keyboardType="number-pad"
       />
 
-      <Text>Rack</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Rack</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Rack"
         value={formData.rack}
         onChangeText={(value) => handleInputChange('rack', value)}
       />
 
-      <Text>Min Stock</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Min Stock</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Min Stock"
         value={formData.min_stock}
@@ -181,8 +188,9 @@ const EditProduct = ({ navigation, route }) => {
         keyboardType="number-pad"
       />
 
-      <Text>Discount (%)</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Discount (%)</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Discount"
         value={formData.discount}
@@ -190,19 +198,21 @@ const EditProduct = ({ navigation, route }) => {
         keyboardType="number-pad"
       />
 
-          <Text>Grosir Prices</Text>
+          <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Grosir Prices</Text>
           <FlatList
             data={formData.price_grosir}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => (
               <View style={styles.listItem}>
                 <TextInput
+        placeholderTextColor={COLORS.dark}
                   style={styles.input}
                   value={item.name}
                   placeholder="Name"
                   onChangeText={(value) => updateGrosirPrice(index, 'name', value)}
                 />
                 <TextInput
+        placeholderTextColor={COLORS.dark}
                   style={styles.input}
                   value={item.min}
                   placeholder="Min Qty"
@@ -210,6 +220,7 @@ const EditProduct = ({ navigation, route }) => {
                   onChangeText={(value) => updateGrosirPrice(index, 'min', value)}
                 />
                 <TextInput
+        placeholderTextColor={COLORS.dark}
                   style={styles.input}
                   value={item.price}
                   placeholder="Price"
@@ -245,6 +256,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         marginBottom: 20,
         textAlign: 'center',
+        color:COLORS.dark,
       },
       row: {
         flexDirection: 'row',

@@ -1,4 +1,4 @@
 
 
-export const BASE_URL = 'https://kasirify.adifahram.com/'
+export const BASE_URL = 'https://kasirifyprod.adifahram.com/'
 

@@ -82,7 +82,7 @@ const BuatProduct = ({ navigation }) => {
         valueKey="id"
       />
 
-      <Text>Name</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Name</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}
@@ -91,7 +91,7 @@ const BuatProduct = ({ navigation }) => {
         onChangeText={(value) => handleInputChange('name', value)}
       />
 
-        <Text>Code</Text>
+        <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Code</Text>
         <View style={styles.row}>
         <TextInput
         placeholderTextColor={COLORS.dark}
@@ -115,7 +115,7 @@ const BuatProduct = ({ navigation }) => {
           onCancel={() => setScannerVisible(false)}
         />
       </Modal>
-      <Text>Stock</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Stock</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}
@@ -125,7 +125,7 @@ const BuatProduct = ({ navigation }) => {
         keyboardType="number-pad"
       />
 
-      <Text>Basic Price</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Basic Price</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}
@@ -135,7 +135,7 @@ const BuatProduct = ({ navigation }) => {
         keyboardType="number-pad"
       />
 
-      <Text>Selling Price</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Selling Price</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}
@@ -145,7 +145,7 @@ const BuatProduct = ({ navigation }) => {
         keyboardType="number-pad"
       />
 
-      <Text>Rack</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Rack</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}
@@ -154,7 +154,7 @@ const BuatProduct = ({ navigation }) => {
         onChangeText={(value) => handleInputChange('rack', value)}
       />
 
-      <Text>Min Stock</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Min Stock</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}
@@ -164,7 +164,7 @@ const BuatProduct = ({ navigation }) => {
         keyboardType="number-pad"
       />
 
-      <Text>Discount (%)</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Discount (%)</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}
@@ -174,7 +174,7 @@ const BuatProduct = ({ navigation }) => {
         keyboardType="number-pad"
       />
 
-      <Text>Grosir Prices</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Grosir Prices</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}

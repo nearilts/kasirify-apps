@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator } from 're
 import usePutData from '../../../utils/usePutData';
 import useFetchData from '../../../utils/useFetchData';
 import COLORS from '../../../const/color';
+import styles from '../../../const/styles';
 
 const UbahCategory = ({ navigation, route  }) => {
   const { Id } = route.params; // Ambil Id dari route params
@@ -47,7 +48,7 @@ const UbahCategory = ({ navigation, route  }) => {
     <View style={styles.containercenter}>
       <Text style={styles.title}>Buat Kategori</Text>
 
-      <Text>Name</Text>
+      <Text  style={{color:COLORS.dark}}>Name</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}
@@ -65,25 +66,5 @@ const UbahCategory = ({ navigation, route  }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    marginBottom: 10,
-    color:COLORS.dark,
-    borderRadius: 5,
-  },
-});
 
 export default UbahCategory;

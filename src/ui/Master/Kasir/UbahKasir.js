@@ -48,7 +48,7 @@ const UbahKasir = ({ navigation, route  }) => {
     <View style={styles.containercenter}>
       <Text style={styles.title}>Buat Kasir</Text>
 
-      <Text>Name</Text>
+      <Text  style={{color:COLORS.dark}}>Name</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}

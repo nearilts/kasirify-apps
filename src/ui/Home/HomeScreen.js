@@ -46,7 +46,7 @@ const HomeScreen = ({ navigation }) => {
       alert('Success', 'Cetak berhasil.');
       navigation.goBack()
     } catch (error) {
-      alert('Error', `Gagal mencetak: ${error.message}`);
+      alert(`Gagal mencetak: ${error.message}`);
     }
   };
 
@@ -118,7 +118,7 @@ const HomeScreen = ({ navigation }) => {
              <ButtonCircle
                   iconName="print"
                   color={COLORS.primary2} 
-                  onPress={() => Print()} 
+                  onPress={() => printText()} 
                   label="Test Print" 
               />
             </>

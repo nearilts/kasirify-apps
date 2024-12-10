@@ -87,7 +87,7 @@ Kembali         Rp.${formatNumber(printData.data.amount_remaining)}
       alert('Success', 'Cetak berhasil.');
     //   navigation.goBack()
     } catch (error) {
-      alert('Error', `Gagal mencetak: ${error.message}`);
+      alert(`Gagal mencetak: ${error.message}`);
     }
   };
 

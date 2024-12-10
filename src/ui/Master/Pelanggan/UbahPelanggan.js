@@ -48,7 +48,7 @@ const UbahPelanggan = ({ navigation, route  }) => {
     <View style={styles.containercenter}>
       <Text style={styles.title}>Buat Pelanggan</Text>
 
-      <Text>Name</Text>
+      <Text style={{color:COLORS.dark}}>Name</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}
@@ -57,7 +57,7 @@ const UbahPelanggan = ({ navigation, route  }) => {
         onChangeText={(value) => handleInputChange('name', value)}
       />
 
-      <Text>Email</Text>
+      <Text style={{color:COLORS.dark}}>Email</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}
@@ -67,7 +67,7 @@ const UbahPelanggan = ({ navigation, route  }) => {
         onChangeText={(value) => handleInputChange('email', value)}
       />
 
-      <Text>Phone</Text>
+      <Text style={{color:COLORS.dark}}>Phone</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}

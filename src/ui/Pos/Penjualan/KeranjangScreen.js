@@ -283,6 +283,7 @@ const handlePayment = async () => {
             <View style={{margin:10}}>
                 <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Sub Total</Text>
                 <TextInput
+                      placeholderTextColor={COLORS.dark}
                     editable={false}
                     style={[styles.input,{fontWeight:'bold', color:COLORS.dark}]}
                     placeholder="Sub Total"
@@ -322,6 +323,7 @@ const handlePayment = async () => {
             <View style={{margin:10}}>
                 <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Diskon</Text>
                 <TextInput
+        placeholderTextColor={COLORS.dark}
                     style={[styles.input,{fontWeight:'bold', color:COLORS.dark}]}
                     placeholder="Diskon"
                     value={formData.discount}
@@ -338,6 +340,7 @@ const handlePayment = async () => {
             <View style={{margin:10}}>
                 <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Total Potongan</Text>
                 <TextInput
+        placeholderTextColor={COLORS.dark}
                     style={[styles.input,{fontWeight:'bold', color:COLORS.dark}]}
                     placeholder="Total Potongan"
                     value={formData.amount_discount}
@@ -373,6 +376,7 @@ const handlePayment = async () => {
             <View style={{margin:10}}>
                 <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Total Harga</Text>
                 <TextInput
+        placeholderTextColor={COLORS.dark}
                     editable={false}
                     style={[styles.input,{fontWeight:'bold', color:COLORS.dark}]}
                     placeholder="Total Harga"
@@ -385,6 +389,7 @@ const handlePayment = async () => {
             <View style={{margin:10}}>
                 <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Total Bayar</Text>
                 <TextInput
+        placeholderTextColor={COLORS.dark}
                     style={[styles.input,{fontWeight:'bold', color:COLORS.dark}]}
                     placeholder="Total Bayar"
                     value={formData.amount_paid}
@@ -398,6 +403,7 @@ const handlePayment = async () => {
             <View style={{margin:10}}>
                 <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Kembalian</Text>
                 <TextInput
+        placeholderTextColor={COLORS.dark}
                     style={[styles.input,{fontWeight:'bold', color:COLORS.dark}]}
                     placeholder="Kembalian"
                     value={formData.amount_remaining}
@@ -430,6 +436,7 @@ const handlePayment = async () => {
                     
                     <Text style={{color:COLORS.dark, fontWeight:'bold'}}>Jumlah Cicilan (x)</Text>
                     <TextInput
+        placeholderTextColor={COLORS.dark}
                         style={[styles.input,{fontWeight:'bold', color:COLORS.dark}]}
                         placeholder="Jumlah Cicilan "
                         value={formData.tempo}
@@ -442,6 +449,7 @@ const handlePayment = async () => {
                 
                     <Text style={{color:COLORS.dark, fontWeight:'bold'}}> Per Hari</Text>
                     <TextInput
+        placeholderTextColor={COLORS.dark}
                         style={[styles.input,{fontWeight:'bold', color:COLORS.dark}]}
                         placeholder="isi (30) jika 30 hari pertempo bayar "
                         value={formData.hari}

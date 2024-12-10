@@ -69,7 +69,7 @@ const SearchableSelect = ({
 
   return (
     <View style={styles.container}>
-      <Text style={{color:COLORS.dark}}>{label}</Text>
+      <Text style={{color:COLORS.dark, fontWeight:'bold'}}>{label}</Text>
       <TextInput
         placeholderTextColor={COLORS.dark}
         style={styles.input}
