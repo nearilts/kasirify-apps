@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator } from 're
 import usePostData from '../../../utils/usePostData';
 import SearchableSelect from '../../../component/SearchableSelect';
 import { BASE_URL } from '../../../const/url';
+import COLORS from '../../../const/color';
 
 const OpenCashier = ({ navigation }) => {
   const { postData, isLoading } = usePostData();
@@ -50,8 +51,9 @@ const OpenCashier = ({ navigation }) => {
         labelKey="name"
         valueKey="id"
       />
-      <Text>Saldo Awal Kasir</Text>
+      <Text  style={{color:COLORS.dark}}>Saldo Awal Kasir</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Saldo Awal Kasir "
           keyboardType="number-pad"
@@ -79,6 +81,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 20,
     textAlign: 'center',
+    color:COLORS.dark,
   },
   input: {
     borderWidth: 1,
@@ -86,6 +89,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     borderRadius: 5,
+    color:COLORS.dark,
   },
 });
 

@@ -58,7 +58,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.card90}>
           <View style={styles.flexRowaround}>
               <View style={styles.flexColumnBetween}> 
-                <Text>
+                <Text style={{color:COLORS.dark}}>
                   Saldo PPOB
                 </Text>
                 <Text style={styles.text18}>
@@ -69,7 +69,7 @@ const HomeScreen = ({ navigation }) => {
                 
               </View> */}
               <View style={styles.flexColumnBetween}> 
-                <Text>
+                <Text style={{color:COLORS.dark}}>
                     Saldo Toko
                 </Text>
                 <Text style={styles.text18}>
@@ -83,7 +83,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.card90}>
           <View style={styles.flexRowaround}>
               <View style={styles.flexColumnBetween}> 
-                <Text>
+                <Text style={{color:COLORS.dark}}>
                   Omset Hari Ini
                 </Text>
                 <Text style={styles.text18}>
@@ -94,7 +94,7 @@ const HomeScreen = ({ navigation }) => {
                 
               </View>
               <View style={styles.flexColumnBetween}> 
-                <Text>
+                <Text style={{color:COLORS.dark}}>
                     Profit Hari Ini
                 </Text>
                 <Text style={styles.text18}>

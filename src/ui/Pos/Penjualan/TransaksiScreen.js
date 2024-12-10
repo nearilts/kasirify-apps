@@ -145,12 +145,14 @@ const TransaksiScreen = ({ navigation  }) => {
 
         <View style={styles.flexRowaround}>
         <TextInput
+        placeholderTextColor={COLORS.dark}
         style={[styles.input,{width:220}]}
         placeholder="Product Name"
         value={formData.name}
         onChangeText={(value) => handleInputChange('name', value)}
         />
       <TextInput
+        placeholderTextColor={COLORS.dark}
           style={[styles.input,{width:150}]}
           placeholder="Barcode"
           value={formData.code}

@@ -18,6 +18,11 @@ export const styles = StyleSheet.create({
         alignContent:'flex-start',
         paddingTop:10
     },
+    containercenter: {
+        flex: 1,
+        padding: 20,
+        justifyContent: 'center',
+      },
     containers : {
         alignItems:'center',
         alignContent:'flex-start',
@@ -55,7 +60,7 @@ export const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 16,
+        marginBottom: 20,
         color:COLORS.dark
     },
     loadingText: {
@@ -140,9 +145,13 @@ export const styles = StyleSheet.create({
         height: 50,
         borderWidth: 1,
         backgroundColor:COLORS.white,
+        color:COLORS.dark,
         borderColor: '#ccc',
         padding: 10,
+        marginBottom: 10,
         borderRadius: 5,
+        
+    color:COLORS.dark,
       },
 })
 

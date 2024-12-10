@@ -5,6 +5,7 @@ import useFetchData from '../../../utils/useFetchData'; // Custom hook untuk fet
 import SearchableSelect from '../../../component/SearchableSelect';
 import { BASE_URL } from '../../../const/url';
 import BarcodeScanner from '../../../component/BarcodeScanner';
+import COLORS from '../../../const/color';
 
 const EditProduct = ({ navigation, route }) => {
   const { productId } = route.params; // Ambil productId dari route params
@@ -261,6 +262,7 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 10,
         borderRadius: 5,
+        color:COLORS.dark,
       },
 });
 

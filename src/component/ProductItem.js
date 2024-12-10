@@ -85,6 +85,7 @@ const ProductItem = ({ item, onPress, color, icon, onUpdate }) => {
               <Text style={{ fontSize: 20, color: COLORS.white, fontWeight: 'bold' }}>-</Text>
             </TouchableOpacity>
             <TextInput
+        placeholderTextColor={COLORS.dark}
               value={inputText} // Menampilkan input text yang masih dalam proses
               style={{
                 borderWidth: 1,
@@ -92,6 +93,7 @@ const ProductItem = ({ item, onPress, color, icon, onUpdate }) => {
                 width: 50,
                 textAlign: 'center',
                 borderRadius: 5,
+                color:COLORS.dark,
               }}
               keyboardType="decimal-pad" // Menggunakan keyboard untuk input desimal
               onChangeText={handleQtyChange} // Memanggil handleQtyChange untuk update kuantitas

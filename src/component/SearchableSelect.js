@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, TextInput, FlatList, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import COLORS from '../const/color';
 
 const SearchableSelect = ({ 
   label, 
@@ -68,8 +69,9 @@ const SearchableSelect = ({
 
   return (
     <View style={styles.container}>
-      <Text>{label}</Text>
+      <Text style={{color:COLORS.dark}}>{label}</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder={placeholder}
         value={query}
@@ -105,6 +107,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     padding: 10,
     borderRadius: 5,
+    color:COLORS.dark
   },
   dropdown: {
     borderWidth: 1,
@@ -116,6 +119,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
+    color:COLORS.dark
   },
 });
 

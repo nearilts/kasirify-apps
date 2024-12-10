@@ -4,6 +4,7 @@ import usePostData from '../../../utils/usePostData';
 import SearchableSelect from '../../../component/SearchableSelect';
 import { BASE_URL } from '../../../const/url';
 import BarcodeScanner from '../../../component/BarcodeScanner';
+import COLORS from '../../../const/color';
 
 const BuatProduct = ({ navigation }) => {
   const { postData, isLoading } = usePostData();
@@ -83,6 +84,7 @@ const BuatProduct = ({ navigation }) => {
 
       <Text>Name</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Product Name"
         value={formData.name}
@@ -92,6 +94,7 @@ const BuatProduct = ({ navigation }) => {
         <Text>Code</Text>
         <View style={styles.row}>
         <TextInput
+        placeholderTextColor={COLORS.dark}
           style={[styles.input, styles.flexInput]}
           placeholder="Scan or enter manually"
           value={formData.code}
@@ -114,6 +117,7 @@ const BuatProduct = ({ navigation }) => {
       </Modal>
       <Text>Stock</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Stock"
         value={formData.stock}
@@ -123,6 +127,7 @@ const BuatProduct = ({ navigation }) => {
 
       <Text>Basic Price</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Basic Price"
         value={formData.basic_price}
@@ -132,6 +137,7 @@ const BuatProduct = ({ navigation }) => {
 
       <Text>Selling Price</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Selling Price"
         value={formData.selling_price}
@@ -141,6 +147,7 @@ const BuatProduct = ({ navigation }) => {
 
       <Text>Rack</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Rack"
         value={formData.rack}
@@ -149,6 +156,7 @@ const BuatProduct = ({ navigation }) => {
 
       <Text>Min Stock</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Min Stock"
         value={formData.min_stock}
@@ -158,6 +166,7 @@ const BuatProduct = ({ navigation }) => {
 
       <Text>Discount (%)</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Discount"
         value={formData.discount}
@@ -167,12 +176,14 @@ const BuatProduct = ({ navigation }) => {
 
       <Text>Grosir Prices</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Name"
         value={grosirEntry.name}
         onChangeText={(value) => setGrosirEntry({ ...grosirEntry, name: value })}
       />
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Min Qty"
         value={grosirEntry.min}
@@ -180,6 +191,7 @@ const BuatProduct = ({ navigation }) => {
         keyboardType="number-pad"
       />
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Price"
         value={grosirEntry.price}
@@ -197,12 +209,14 @@ const BuatProduct = ({ navigation }) => {
         renderItem={({ item, index }) => (
           <View style={styles.listItem}>
             <TextInput
+        placeholderTextColor={COLORS.dark}
               style={styles.input}
               value={item.name}
               placeholder="Name"
               onChangeText={(value) => updateGrosirPrice(index, 'name', value)}
             />
             <TextInput
+        placeholderTextColor={COLORS.dark}
               style={styles.input}
               value={item.min}
               placeholder="Min Qty"
@@ -210,6 +224,7 @@ const BuatProduct = ({ navigation }) => {
               onChangeText={(value) => updateGrosirPrice(index, 'min', value)}
             />
             <TextInput
+              placeholderTextColor={COLORS.dark}
               style={styles.input}
               value={item.price}
               placeholder="Price"
@@ -245,6 +260,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 20,
     textAlign: 'center',
+    color:COLORS.dark,
   },
   row: {
     flexDirection: 'row',
@@ -262,6 +278,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     borderRadius: 5,
+    color:COLORS.dark,
   },
 });
 

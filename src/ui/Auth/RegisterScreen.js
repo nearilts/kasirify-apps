@@ -26,12 +26,14 @@ const RegisterScreen = ({ navigation }) => {
         <Spinner visible={isLoading} />
 
         <TextInput
+        placeholderTextColor={COLORS.dark}
           style={styles.input}
           placeholder="Name"
           value={name}
           onChangeText={text => setname(text)}
         />
         <TextInput
+        placeholderTextColor={COLORS.dark}
           style={styles.input}
           placeholder="Email"
           keyboardType="email-address"
@@ -40,6 +42,7 @@ const RegisterScreen = ({ navigation }) => {
         />
 
         <TextInput
+        placeholderTextColor={COLORS.dark}
           style={styles.input}
           placeholder="Password"
           secureTextEntry
@@ -48,6 +51,7 @@ const RegisterScreen = ({ navigation }) => {
         />
         
         <TextInput
+        placeholderTextColor={COLORS.dark}
           style={styles.input}
           placeholder="Phone (628*********)"
           keyboardType="phone-pad"
@@ -56,6 +60,7 @@ const RegisterScreen = ({ navigation }) => {
         />
         
         <TextInput
+        placeholderTextColor={COLORS.dark}
           style={styles.input}
           placeholder="City"
           value={city}
@@ -63,6 +68,7 @@ const RegisterScreen = ({ navigation }) => {
         />
         
         <TextInput
+        placeholderTextColor={COLORS.dark}
           style={styles.input}
           placeholder="Address"
           value={address}
@@ -93,6 +99,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 24,
+    color:COLORS.dark
   },
   input: {
     width: '100%',
@@ -100,6 +107,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 1,
     borderColor: COLORS.secondgrey,
+    color:COLORS.dark,
     borderRadius: 8,
     backgroundColor: COLORS.white,
   },

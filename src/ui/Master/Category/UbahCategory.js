@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator } from 'react-native';
 import usePutData from '../../../utils/usePutData';
 import useFetchData from '../../../utils/useFetchData';
+import COLORS from '../../../const/color';
 
 const UbahCategory = ({ navigation, route  }) => {
   const { Id } = route.params; // Ambil Id dari route params
@@ -43,11 +44,12 @@ const UbahCategory = ({ navigation, route  }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.containercenter}>
       <Text style={styles.title}>Buat Kategori</Text>
 
       <Text>Name</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Name"
         value={formData.name}
@@ -79,6 +81,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     padding: 10,
     marginBottom: 10,
+    color:COLORS.dark,
     borderRadius: 5,
   },
 });

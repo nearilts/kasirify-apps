@@ -19,6 +19,7 @@ const LoginScreen = ({ navigation }) => {
 
         <Text style={styles.title}>Login</Text>
         <TextInput
+        placeholderTextColor={COLORS.dark}
           style={styles.input}
           placeholder="Email"
           keyboardType="email-address"
@@ -26,6 +27,7 @@ const LoginScreen = ({ navigation }) => {
           onChangeText={text => setEmail(text)}
         />
         <TextInput
+        placeholderTextColor={COLORS.dark}
           style={styles.input}
           placeholder="Password"
           secureTextEntry
@@ -60,6 +62,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 24,
+    color:COLORS.dark
   },
   input: {
     width: '100%',
@@ -67,6 +70,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 1,
     borderColor: COLORS.secondgrey,
+    color:COLORS.dark,
     borderRadius: 8,
     backgroundColor: COLORS.white,
   },

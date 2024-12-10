@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator } from 're
 import usePostData from '../../utils/usePostData';
 import SearchableSelect from '../../component/SearchableSelect';
 import { BASE_URL } from '../../const/url';
+import COLORS from '../../const/color';
 
 const BuatToko = ({ navigation }) => {
   const { postData, isLoading } = usePostData();
@@ -45,6 +46,7 @@ const BuatToko = ({ navigation }) => {
 
       <Text>Name</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Name"
         value={formData.name}
@@ -53,6 +55,7 @@ const BuatToko = ({ navigation }) => {
       <Text>Phone</Text>
 
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         value={formData.phone}
         placeholder="Phone (628*********)"
@@ -62,6 +65,7 @@ const BuatToko = ({ navigation }) => {
       <Text>Country</Text>
 
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Country"
         value={formData.country}
@@ -99,6 +103,7 @@ const BuatToko = ({ navigation }) => {
       <Text>Address</Text>
 
         <TextInput
+        placeholderTextColor={COLORS.dark}
           style={styles.input}
           placeholder="Address"
           value={formData.address}
@@ -123,6 +128,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 20,
     textAlign: 'center',
+    color:COLORS.dark
   },
   input: {
     borderWidth: 1,
@@ -130,6 +136,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     borderRadius: 5,
+    color:COLORS.dark,
   },
 });
 

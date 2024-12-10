@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator } from 're
 import usePostData from '../../../utils/usePostData';
 import SearchableSelect from '../../../component/SearchableSelect';
 import { BASE_URL } from '../../../const/url';
+import COLORS from '../../../const/color';
 
 const TutupKasir = ({ navigation }) => {
   const { postData, isLoading } = usePostData();
@@ -37,8 +38,9 @@ const TutupKasir = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.title}>Tutup Kasir</Text>
 
-      <Text>Saldo Akhir Kasir</Text>
+      <Text style={{color:COLORS.dark}} >Saldo Akhir Kasir</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Saldo Akhir Kasir"
           keyboardType="number-pad"
@@ -65,6 +67,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 20,
     textAlign: 'center',
+    color:COLORS.dark
   },
   input: {
     borderWidth: 1,
@@ -72,6 +75,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     borderRadius: 5,
+    color:COLORS.dark,
   },
 });
 

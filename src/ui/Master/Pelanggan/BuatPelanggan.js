@@ -3,6 +3,8 @@ import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator } from 're
 import usePostData from '../../../utils/usePostData';
 import SearchableSelect from '../../../component/SearchableSelect';
 import { BASE_URL } from '../../../const/url';
+import COLORS from '../../../const/color';
+import styles from '../../../const/styles';
 
 const BuatPelanggan = ({ navigation }) => {
   const { postData, isLoading } = usePostData();
@@ -34,11 +36,12 @@ const BuatPelanggan = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.containercenter}>
       <Text style={styles.title}>Buat Pelanggan</Text>
 
       <Text>Name</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Name"
         value={formData.name}
@@ -47,6 +50,7 @@ const BuatPelanggan = ({ navigation }) => {
 
       <Text>Email</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Email"
         value={formData.email}
@@ -56,6 +60,7 @@ const BuatPelanggan = ({ navigation }) => {
 
       <Text>Phone</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
           placeholder="Phone (628*********)"
           keyboardType="phone-pad"
@@ -71,24 +76,5 @@ const BuatPelanggan = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 5,
-  },
-});
 
 export default BuatPelanggan;

@@ -3,6 +3,8 @@ import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator } from 're
 import usePostData from '../../../utils/usePostData';
 import SearchableSelect from '../../../component/SearchableSelect';
 import { BASE_URL } from '../../../const/url';
+import COLORS from '../../../const/color';
+import styles from '../../../const/styles';
 
 const BuatCategory = ({ navigation }) => {
   const { postData, isLoading } = usePostData();
@@ -34,11 +36,12 @@ const BuatCategory = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.containercenter}>
       <Text style={styles.title}>Buat Kategori</Text>
 
-      <Text>Name</Text>
+      <Text style={{color:COLORS.dark}}>Name</Text>
       <TextInput
+        placeholderTextColor={COLORS.dark}
         style={styles.input}
         placeholder="Name"
         value={formData.name}
@@ -54,24 +57,5 @@ const BuatCategory = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 5,
-  },
-});
 
 export default BuatCategory;
