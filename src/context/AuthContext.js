@@ -36,6 +36,7 @@ export const AuthProvider = ({ children }) => {
           });
         }else{
           alert(userData.messages)
+          setIsLoading(false);
         }
         
       })
